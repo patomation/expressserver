@@ -2,10 +2,20 @@
   "name": "expresshelloworld",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "express-winston": "^2.0.0",
+    "glob": "^7.1.3",
+    "mongoose": "^5.5.5",
+    "path": "^0.12.7",
+    "winston": "^2.0.0"
+  }
 }
