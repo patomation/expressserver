@@ -19,10 +19,17 @@ node server.js
 ```
 
 # Notes:
-Test endpoint
+Test Form Submit endpoint
 ```bash
-curl -g name='bob&email=myemail@email.com&date=05072019&message=cool%20place&adults=2' localhost:8080/book
+curl -d 'name=bob&email=cool@gmail.com' http://localhost:8080/api/contact/submit
 ```
+Test login
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"xyz","password":"xyz"}' \
+  http://localhost:3000/api/login
+```  
 Design Pattern Guide I used:
 [Design Pattern](https://medium.com/@carlos.illobre/nodejs-express-how-to-organize-your-routes-in-very-big-applications-and-why-controllers-are-evil-e202eea497f4)
 

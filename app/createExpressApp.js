@@ -18,7 +18,8 @@ module.exports = ({ database, logger }) => express()
   return next()
 })
 .use(express.static('./public'))
-.use('./api', router)
+// .use('./api', router) // NOTE: ./api does not work for some reason
+.use('/api', router)
 .use((error, req, res, next) => {
   logger.error(error, error)
   req.status(error.status || 500).json({ error })
