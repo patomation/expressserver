@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const expressWinston = require('express-winston')
 const router = require('./routes/createRouter.js')()
 
-module.exports = ({ database, logger }) => express()
+module.exports = ({ logger }) => express()
 .use(expressWinston.logger({
   winstonInstance: logger,
   msg: '{{res.statusCode}} {{req.method}}  {{req.url}}  {{req.responseTime}}ms',
@@ -14,7 +14,6 @@ module.exports = ({ database, logger }) => express()
 .use((req, res, next) => {
   req.base = `${req.protocol}://${req.get('host')}`
   req.logger = logger
-  req.db = database
   return next()
 })
 .use(express.static('./public'))
