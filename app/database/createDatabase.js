@@ -9,7 +9,7 @@ module.exports = ({ logger }) => {
 
     mongoose.connect(url)
 
-    const db = glob.sync('./schemas/**/*.js', { cwd: __dirname })
+    const models = glob.sync('./schemas/**/*.js', { cwd: __dirname })
     .map(filename => {
         return {
             schema: require(filename),
@@ -18,13 +18,14 @@ module.exports = ({ logger }) => {
                 .replace(path.extname(filename), ''),
         }
     })
-    .map(({name, schema}) => mongoose.model(name, schema))
-    .reduce((db, model) => {
-        return {
-            db,
-            [model.modelName]: model,
-        }
-    }, {})
+    .map(({name, schema}) => mongoose.model(name, schema));
+
+    // Map models to db object giving each model a key name
+    db = {}
+    models.forEach( (model) => {
+      let modelObject = { [model.modelName]: model};
+      db = { ...db, ...modelObject }
+    })
 
     mongoose
     .connection
