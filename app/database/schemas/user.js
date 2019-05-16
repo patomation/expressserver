@@ -5,8 +5,8 @@ const userSchema = mongoose.Schema({
     password: String,
 })
 
-userSchema.methods.sayHello = function () {
-    return `This is a shared function: ${this.username}`
-}
+// userSchema.methods.sayHello = function () {
+//     return `This is a shared function: ${this.username}`
+// }
 
 module.exports = userSchema
