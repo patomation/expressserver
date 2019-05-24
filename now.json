@@ -1,5 +1,11 @@
 {
   "builds": [
-    { "src": "server.js", "use": "@now/node" }
+    {
+      "src": "server.js",
+      "use": "@now/node",
+      "env": {
+        "MONGODB_URL": "mongodb+srv://dbUser:mypassword@cluster0-vdfy8.mongodb.net/test?retryWrites=true"
+      }
+    }
   ]
 }
